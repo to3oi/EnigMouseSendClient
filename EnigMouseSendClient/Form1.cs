@@ -1,5 +1,6 @@
 using System;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using UnityEasyNet;
 
@@ -20,8 +21,15 @@ namespace EnigMouseSendClient
         public Form1()
         {
             InitializeComponent();
+            AllocConsole();
         }
+        //デバッグ用
+        [DllImport("kernel32.dll")]
+        private static extern bool AllocConsole();
 
+        //デバッグ用
+        [DllImport("kernel32.dll")]
+        private static extern bool FreeConsole();
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {

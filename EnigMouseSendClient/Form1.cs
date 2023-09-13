@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -10,7 +10,7 @@ namespace EnigMouseSendClient
     public partial class Form1 : Form
     {
         /// <summary>
-        /// MasterPC‚Æ‚ÌÚ‘±‚ğŠÇ—‚·‚éƒŒƒV[ƒo[
+        /// MasterPCã¨ã®æ¥ç¶šã‚’ç®¡ç†ã™ã‚‹ãƒ¬ã‚·ãƒ¼ãƒãƒ¼
         /// </summary>
         private TCPReceiver MasterPCReceiver;
 
@@ -23,11 +23,11 @@ namespace EnigMouseSendClient
             InitializeComponent();
             AllocConsole();
         }
-        //ƒfƒoƒbƒO—p
+        //ãƒ‡ãƒãƒƒã‚°ç”¨
         [DllImport("kernel32.dll")]
         private static extern bool AllocConsole();
 
-        //ƒfƒoƒbƒO—p
+        //ãƒ‡ãƒãƒƒã‚°ç”¨
         [DllImport("kernel32.dll")]
         private static extern bool FreeConsole();
 

@@ -23,6 +23,9 @@ namespace UnityEasyNet
         /// </summary>
         public Action<IPEndPoint> OnIPEndPointReceived;
 
+        /// <summary>
+        /// 応答するときに送信するbyte[]を返すメソッド
+        /// </summary>
         public Func<byte[]> OnSendResponse;
 
         //受信したデータを保持するための変数

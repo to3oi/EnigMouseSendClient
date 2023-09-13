@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using System.Collections;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -62,7 +64,8 @@ namespace EnigMouseSendClient
 
         private void testReciver((byte[] bytes, int readCount) taple)
         {
-            Console.WriteLine(taple.bytes.ToString());
+            var s = Encoding.UTF8.GetString(taple.bytes,0,taple.readCount);
+            Console.WriteLine(s == "connecting");
         }
 
         private void testSend_Click(object sender, EventArgs e)

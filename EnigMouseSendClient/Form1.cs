@@ -1,8 +1,4 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 using UnityEasyNet;
 
@@ -17,8 +13,8 @@ namespace EnigMouseSendClient
         private TCPReceiver MasterPCReceiver;
 
         private static int CommunicationReceivePort = 12010;
-        private static int ImageReceivePort = 12010;
-        private static int ResultSendPort = 12010;
+        private static int ImageReceivePort = 12011;
+        private static int ResultSendPort = 12012;
 
         public Form1()
         {
@@ -46,9 +42,10 @@ namespace EnigMouseSendClient
             MasterPCReceiver = new TCPReceiver(CommunicationReceivePort, MasterPC_Connection_Receive, MasterPC_Connection_Response);
         }
 
-        private void MasterPC_Connection_Receive((byte[] buffer, int readCount) tuple)
+        private void MasterPC_Connection_Receive((byte[] bytes, int readCount) tuple)
         {
-
+            var s = Encoding.UTF8.GetString(tuple.bytes, 0, tuple.readCount);
+            Console.WriteLine(s == "connecting");
         }
 
         private byte[] MasterPC_Connection_Response()
@@ -62,9 +59,9 @@ namespace EnigMouseSendClient
             _sender = new TCPSender(SendIP.Text, CommunicationReceivePort, testReciver);
         }
 
-        private void testReciver((byte[] bytes, int readCount) taple)
+        private void testReciver((byte[] bytes, int readCount) tuple)
         {
-            var s = Encoding.UTF8.GetString(taple.bytes,0,taple.readCount);
+            var s = Encoding.UTF8.GetString(tuple.bytes,0, tuple.readCount);
             Console.WriteLine(s == "connecting");
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessagePack;
+using System;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -84,10 +85,6 @@ namespace EnigMouseSendClient
         }
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
-            MasterPC_UDPReceiver.Dispose();
-            MasterPC_UDPSender.Dispose();
-            ImageUDPReceiver.Dispose();
-            ResultUDPSender.Dispose();
         }
 
 
@@ -101,7 +98,7 @@ namespace EnigMouseSendClient
             //画像取得用のUDPを生成
             ImageUDPReceiver = new UDPReceiver(ImageReceivePort, ObjectDetection);
         }
-        private void MasterPC_UDPReceiver_Receiver(byte[] obj)
+        private void MasterPC_UDPReceiver_Receiver(byte[] bytes)
         {
         }
         private void MasterPC_UDPReceiver_IPEndpoint(IPEndPoint point)
@@ -117,7 +114,8 @@ namespace EnigMouseSendClient
 
         #region 画像取得～物体検出
         uint saveFileIndex = 0;
-        private void ObjectDetection(byte[] bytes)
+        bool isBusy = false;
+        private async void ObjectDetection(byte[] bytes)
         {
             Console.WriteLine($"ObjectDetection");
             var image = ByteArrayToImage(bytes);
@@ -126,11 +124,18 @@ namespace EnigMouseSendClient
             saveFileIndex++;
             //最大枚数を1000枚に制限
             if (1000 <= saveFileIndex) { saveFileIndex = 0; }
+
+            //TODO:物体検出の処理に置き換え
+            var result = new MasterPCResultStruct(ClientIPAddress, new List<ResultStruct>());
+
+            byte[] resultBytes = MessagePackSerializer.Serialize(result);
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            ResultUDPSender.Send(resultBytes);
         }
-        public static Image ByteArrayToImage(byte[] b)
+        public static Image ByteArrayToImage(byte[] bytes)
         {
             ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
+            Image img = (Image)imgconv.ConvertFrom(bytes);
             return img;
         }
         #endregion

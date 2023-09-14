@@ -1,5 +1,4 @@
-﻿using EnigMouseSendMaster;
-using MessagePack;
+﻿using MessagePack;
 
 namespace EnigMouseSendClient
 {

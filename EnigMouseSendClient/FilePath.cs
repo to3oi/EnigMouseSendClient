@@ -9,6 +9,9 @@
 
         public static string assetsPath = null;
 
+        public static string modelFilePath = null;
+
+
         //絶対パスを取得する
         static string GetAbsolutePath(string relativePath)
         {
@@ -18,6 +21,12 @@
             string fullPath = Path.Combine(assemblyFolderPath, relativePath);
 
             return fullPath;
+        }
+        static FilePath()
+        {
+            assetsPath = GetAbsolutePath(assetsRelativePath);
+
+            modelFilePath = Path.Combine(assetsPath, "Model", "model.onnx");
         }
     }
 }

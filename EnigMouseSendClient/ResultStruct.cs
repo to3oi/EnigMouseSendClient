@@ -1,6 +1,6 @@
 ﻿using MessagePack;
 
-namespace EnigMouseSendMaster
+namespace EnigMouseSendClient
 {
     [MessagePackObject]
     [Serializable]

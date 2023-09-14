@@ -1,5 +1,4 @@
-﻿using OpenCvSharp;
-using System;
+﻿using System;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -79,13 +78,19 @@ namespace EnigMouseSendClient
         [DllImport("kernel32.dll")]
         private static extern bool FreeConsole();
 
-        private void Form1_Closing(object sender, FormClosingEventArgs e)
-        {
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
         }
+        private void Form1_Closing(object sender, FormClosingEventArgs e)
+        {
+            MasterPC_UDPReceiver.Dispose();
+            MasterPC_UDPSender.Dispose();
+            ImageUDPReceiver.Dispose();
+            ResultUDPSender.Dispose();
+        }
+
+
 
         private void MasterPC_Connection_Click(object sender, EventArgs e)
         {

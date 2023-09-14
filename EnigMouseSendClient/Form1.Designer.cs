@@ -30,10 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
-            testSend = new Button();
-            SendIP = new TextBox();
             MasterPC_Connection = new Button();
-            button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -55,9 +52,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(testSend);
-            groupBox1.Controls.Add(SendIP);
             groupBox1.Controls.Add(MasterPC_Connection);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 3);
@@ -66,23 +60,6 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Info";
-            // 
-            // testSend
-            // 
-            testSend.Location = new Point(268, 100);
-            testSend.Name = "testSend";
-            testSend.Size = new Size(75, 23);
-            testSend.TabIndex = 2;
-            testSend.Text = "送信開始";
-            testSend.UseVisualStyleBackColor = true;
-            testSend.Click += testInitSend_Click;
-            // 
-            // SendIP
-            // 
-            SendIP.Location = new Point(254, 56);
-            SendIP.Name = "SendIP";
-            SendIP.Size = new Size(100, 23);
-            SendIP.TabIndex = 1;
             // 
             // MasterPC_Connection
             // 
@@ -93,16 +70,6 @@
             MasterPC_Connection.Text = "受信開始";
             MasterPC_Connection.UseVisualStyleBackColor = true;
             MasterPC_Connection.Click += MasterPC_Connection_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(268, 140);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "送信";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += testSend_Click;
             // 
             // Form1
             // 
@@ -116,7 +83,6 @@
             Load += Form1_Load;
             tableLayoutPanel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -125,8 +91,5 @@
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox groupBox1;
         private Button MasterPC_Connection;
-        private Button testSend;
-        private TextBox SendIP;
-        private Button button1;
     }
 }

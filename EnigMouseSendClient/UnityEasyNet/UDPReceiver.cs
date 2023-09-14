@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -38,7 +39,7 @@ namespace UnityEasyNet
 
                 mUDP = new UdpClient(_port);
                 mUDP.BeginReceive(UDPReceive, mUDP);
-                Console.WriteLine($"受信開始");
+                Console.WriteLine($"udp受信開始");
             }
             catch (Exception e)
             {
@@ -100,6 +101,8 @@ namespace UnityEasyNet
         /// <param name="res"></param>
         void UDPReceive(IAsyncResult res)
         {
+            Console.WriteLine($"udp受信待機");
+
             UdpClient getUDP = (UdpClient)res.AsyncState;
             IPEndPoint ipEnd = null;
             
@@ -128,7 +131,7 @@ namespace UnityEasyNet
 
         public void Dispose()
         {
-            mUDP?.Dispose();
+            mUDP?.Close();
         }
     }
 }

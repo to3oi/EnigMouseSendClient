@@ -30,7 +30,9 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
+            MasterPC_Connection = new Button();
             tableLayoutPanel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -50,6 +52,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(MasterPC_Connection);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
@@ -58,17 +61,28 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Info";
             // 
+            // MasterPC_Connection
+            // 
+            MasterPC_Connection.Location = new Point(27, 88);
+            MasterPC_Connection.Name = "MasterPC_Connection";
+            MasterPC_Connection.Size = new Size(75, 23);
+            MasterPC_Connection.TabIndex = 0;
+            MasterPC_Connection.Text = "受信開始";
+            MasterPC_Connection.UseVisualStyleBackColor = true;
+            MasterPC_Connection.Click += MasterPC_Connection_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
-            Name = "EnigMouseSendClient";
+            Name = "Form1";
             Text = "EnigMouseSendClient";
             FormClosing += Form1_Closing;
             Load += Form1_Load;
             tableLayoutPanel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -76,5 +90,6 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox groupBox1;
+        private Button MasterPC_Connection;
     }
 }

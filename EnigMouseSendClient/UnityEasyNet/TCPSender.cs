@@ -10,7 +10,10 @@ namespace UnityEasyNet
     {
         protected TcpClient mTcpClient;
         private NetworkStream mNetworkStream;
-
+        /// <summary>
+        /// データを受信した際に受信したデータを通知する
+        /// </summary>
+        public Action<(byte[] buffer, int readCount)> OnDataReceivedBytes;
 
         private bool mIsConnection;
 
@@ -20,10 +23,12 @@ namespace UnityEasyNet
         /// 指定したIPEndPointにメッセージを送る準備を開始します
         /// </summary>
         /// <param name="_ipEndPoint">送信先の情報が入ったIPEndPoint</param>
-        public TCPSender(IPEndPoint _ipEndPoint)
+        /// <param name="_OnDataReceivedBytes">データを受信した際に受信したデータを通知する</param>
+        public TCPSender(IPEndPoint _ipEndPoint, Action<(byte[] buffer, int readCount)> _OnDataReceivedBytes)
         {
             try
             {
+                OnDataReceivedBytes = _OnDataReceivedBytes;
                 mTcpClient = new TcpClient();
                 mTcpClient.Connect(_ipEndPoint);
                 mNetworkStream = mTcpClient.GetStream();
@@ -40,10 +45,12 @@ namespace UnityEasyNet
         /// 指定したAddressFamilyにメッセージを送る準備を開始します
         /// </summary>
         /// <param name="_addressFamily">送信先の情報が入ったAddressFamily</param>>
-        public TCPSender(AddressFamily _addressFamily)
+        /// <param name="_OnDataReceivedBytes">データを受信した際に受信したデータを通知する</param>
+        public TCPSender(AddressFamily _addressFamily, Action<(byte[] buffer, int readCount)> _OnDataReceivedBytes)
         {
             try
             {
+                OnDataReceivedBytes = _OnDataReceivedBytes;
                 mTcpClient = new TcpClient(_addressFamily);
                 mNetworkStream = mTcpClient.GetStream();
                 mIsConnection = true;
@@ -60,10 +67,12 @@ namespace UnityEasyNet
         /// </summary>
         /// <param name="_hostName">送信先のリモートホストのDNS名</param>
         /// <param name="_port">送信先のポート番号</param>
-        public TCPSender(string _hostName, int _port)
+        /// <param name="_OnDataReceivedBytes">データを受信した際に受信したデータを通知する</param>
+        public TCPSender(string _hostName, int _port, Action<(byte[] buffer, int readCount)> _OnDataReceivedBytes)
         {
             try
             {
+                OnDataReceivedBytes = _OnDataReceivedBytes;
                 mTcpClient = new TcpClient();
                 mTcpClient.Connect(_hostName, _port);
                 mNetworkStream = mTcpClient.GetStream();
@@ -83,7 +92,7 @@ namespace UnityEasyNet
         /// 登録したアドレスのポートにbyte配列を送信する
         /// </summary>
         /// <param name="bytes">送信するbyte配列</param>
-        public void Send(byte[] bytes)
+        public async void Send(byte[] bytes)
         {
             try
             {
@@ -95,6 +104,15 @@ namespace UnityEasyNet
 
                 mNetworkStream.BeginWrite(bytes, 0, bytes.Length, null, null);
                 Console.WriteLine($"送信成功");
+                byte[] receiveBuffer = new byte[1024];
+
+                int byteSize = await mNetworkStream.ReadAsync(receiveBuffer, 0, receiveBuffer.Length);
+                if (byteSize == 0) // クライアントが切断した場合
+                {
+                    mTcpClient.Close();
+                    return;
+                }
+                OnDataReceivedBytes?.Invoke((receiveBuffer, byteSize));
             }
             catch (Exception e)
             {

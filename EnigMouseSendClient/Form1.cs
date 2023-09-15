@@ -121,7 +121,7 @@ namespace EnigMouseSendClient
             Console.WriteLine($"ObjectDetection");
             var image = ByteArrayToImage(bytes);
             var TempImageFilePath = Path.Combine(assetsPath, "TempImage", $"{saveFileIndex}.jpeg");
-            image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+            image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg); 
             saveFileIndex++;
             //最大枚数を1000枚に制限
             if (1000 <= saveFileIndex) { saveFileIndex = 0; }
@@ -131,7 +131,8 @@ namespace EnigMouseSendClient
             List<ResultStruct> result;
             result = await Task.Run(() => ImageRecognition(TempImageFilePath));
 
-            byte[] resultBytes = MessagePackSerializer.Serialize(result);
+            var masterPCResult =new MasterPCResultStruct(ClientIPAddress, result);
+            byte[] resultBytes = MessagePackSerializer.Serialize(masterPCResult);
 
             ResultUDPSender.Send(resultBytes);
         }

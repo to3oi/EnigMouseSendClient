@@ -58,8 +58,8 @@ namespace EnigMouseSendClient
         }
 
         //KinectのDepth,IRのサイズ(固定値)
-        int originalImageHeight = 576;
-        int originalImageWidth = 640;
+        int originalImageHeight = 512;
+        int originalImageWidth = 512;
         /*
             +---------------------- x
             | 

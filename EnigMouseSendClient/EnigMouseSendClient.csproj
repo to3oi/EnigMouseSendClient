@@ -11,14 +11,16 @@
 
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="2.5.124" />
-    <PackageReference Include="OpenCvSharp4" Version="4.7.0.20230115" />
-    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.7.0.20230115" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.7.0.20230115" />
-    <PackageReference Include="OpenCvSharp4.Windows" Version="4.7.0.20230115" />
-    <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.7.0.20230115" />
+    <PackageReference Include="Microsoft.ML" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.15.1" />
+    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="assets\Model\model.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="assets\tempimage\.gitkeep">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

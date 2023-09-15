@@ -58,6 +58,7 @@ namespace EnigMouseSendClient
         {
             InitializeComponent();
             AllocConsole();
+            imageRecognition = new ImageRecognition();
 
             //IPv4のアドレスを取得して表示
             IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
@@ -126,10 +127,12 @@ namespace EnigMouseSendClient
             if (1000 <= saveFileIndex) { saveFileIndex = 0; }
 
             //TODO:物体検出の処理に置き換え
-            var result = new MasterPCResultStruct(ClientIPAddress, new List<ResultStruct>());
+
+            List<ResultStruct> result;
+            result = await Task.Run(() => ImageRecognition(TempImageFilePath));
 
             byte[] resultBytes = MessagePackSerializer.Serialize(result);
-            await Task.Delay(TimeSpan.FromSeconds(2));
+
             ResultUDPSender.Send(resultBytes);
         }
         public static Image ByteArrayToImage(byte[] bytes)
@@ -138,6 +141,32 @@ namespace EnigMouseSendClient
             Image img = (Image)imgconv.ConvertFrom(bytes);
             return img;
         }
+
+        #region 物体検出関数
+
+        ImageRecognition imageRecognition;
+
+        /// <summary>
+        /// 引数のパスに存在する画像を画像認識にかける関数
+        /// </summary>
+        /// <param name="TempImageFilePath"></param>
+        private List<ResultStruct> ImageRecognition(string TempImageFilePath)
+        {
+            List<ResultStruct> results = imageRecognition.ImageRecognitionToFilePath(TempImageFilePath);
+
+            //デバッグ用
+            Console.WriteLine("--------------------------");
+            foreach (ResultStruct resultStruct in results)
+            {
+                Console.WriteLine($"{resultStruct.Label} : {resultStruct.Confidence}");
+                Console.WriteLine($"pos x {resultStruct.PosX}");
+                Console.WriteLine($"pos y {resultStruct.PosY}");
+            }
+            Console.WriteLine("--------------------------");
+
+            return results;
+        }
+        #endregion
         #endregion
     }
 }

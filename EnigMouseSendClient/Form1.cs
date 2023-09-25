@@ -57,7 +57,6 @@ namespace EnigMouseSendClient
         public Form1()
         {
             InitializeComponent();
-            AllocConsole();
             imageRecognition = new ImageRecognition();
 
             //IPv4のアドレスを取得して表示
@@ -71,14 +70,8 @@ namespace EnigMouseSendClient
                     break;
                 }
             }
+            PCIPAddress.Text = ClientIPAddress;
         }
-        //デバッグ用
-        [DllImport("kernel32.dll")]
-        private static extern bool AllocConsole();
-
-        //デバッグ用
-        [DllImport("kernel32.dll")]
-        private static extern bool FreeConsole();
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,6 +94,7 @@ namespace EnigMouseSendClient
         }
         private void MasterPC_UDPReceiver_Receiver(byte[] bytes)
         {
+            isConnected.Text = "Connected";
         }
         private void MasterPC_UDPReceiver_IPEndpoint(IPEndPoint point)
         {
@@ -118,7 +112,6 @@ namespace EnigMouseSendClient
         bool isBusy = false;
         private async void ObjectDetection(byte[] bytes)
         {
-            Console.WriteLine($"ObjectDetection");
             var image = ByteArrayToImage(bytes);
             var TempImageFilePath = Path.Combine(assetsPath, "TempImage", $"{saveFileIndex}.jpeg");
             image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg); 
@@ -155,15 +148,59 @@ namespace EnigMouseSendClient
         {
             List<ResultStruct> results = imageRecognition.ImageRecognitionToFilePath(TempImageFilePath);
 
-            //デバッグ用
-            Console.WriteLine("--------------------------");
+            //結果を表示
+            //初期化
+            Cross_X.Text = "";
+            Cross_Y.Text = "";
+            Cross_Accuracy.Text = "";
+
+            Dot_X.Text = "";
+            Dot_Y.Text = "";
+            Dot_Accuracy.Text = "";
+
+            Round_X.Text = "";
+            Round_Y.Text = "";
+            Round_Accuracy.Text = "";
+
+            Line_X.Text = "";
+            Line_Y.Text = "";
+            Line_Accuracy.Text = "";
+
             foreach (ResultStruct resultStruct in results)
             {
-                Console.WriteLine($"{resultStruct.Label} : {resultStruct.Confidence}");
-                Console.WriteLine($"pos x {resultStruct.PosX}");
-                Console.WriteLine($"pos y {resultStruct.PosY}");
+
+                switch (resultStruct.Label)
+                {
+                    case "Cross":
+                        {
+                            Cross_X.Text = resultStruct.PosX.ToString();
+                            Cross_Y.Text = resultStruct.PosY.ToString();
+                            Cross_Accuracy.Text = resultStruct.Confidence.ToString();
+                        }
+                        break;
+                    case "Dot":
+                        {
+                            Dot_X.Text = resultStruct.PosX.ToString();
+                            Dot_Y.Text = resultStruct.PosY.ToString();
+                            Dot_Accuracy.Text = resultStruct.Confidence.ToString();
+                        }
+                        break;
+                    case "Line":
+                        {
+                            Round_X.Text = resultStruct.PosX.ToString();
+                            Round_Y.Text = resultStruct.PosY.ToString();
+                            Round_Accuracy.Text = resultStruct.Confidence.ToString();
+                        }
+                        break;
+                    case "Round":
+                        {
+                            Line_X.Text = resultStruct.PosX.ToString();
+                            Line_Y.Text = resultStruct.PosY.ToString();
+                            Line_Accuracy.Text = resultStruct.Confidence.ToString();
+                        }
+                        break;
+                }
             }
-            Console.WriteLine("--------------------------");
 
             return results;
         }

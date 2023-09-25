@@ -63,7 +63,6 @@ namespace UnityEasyNet
 
                 mUDP = new UdpClient(_port);
                 mUDP.BeginReceive(UDPReceive, mUDP);
-                Console.WriteLine($"受信開始");
             }
             catch (Exception e)
             {

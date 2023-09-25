@@ -87,6 +87,7 @@ namespace EnigMouseSendClient
         {
             //一度のみUDPSenderなどを生成する
             if (MasterPC_UDPReceiver != null) { return; }
+            isConnected.Text = "Waiting for connection";
             MasterPC_UDPReceiver = new UDPReceiver(CommunicationReceivePort, MasterPC_UDPReceiver_Receiver, MasterPC_UDPReceiver_IPEndpoint);
 
             //画像取得用のUDPを生成
@@ -114,7 +115,7 @@ namespace EnigMouseSendClient
         {
             var image = ByteArrayToImage(bytes);
             var TempImageFilePath = Path.Combine(assetsPath, "TempImage", $"{saveFileIndex}.jpeg");
-            image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg); 
+            image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveFileIndex++;
             //最大枚数を1000枚に制限
             if (1000 <= saveFileIndex) { saveFileIndex = 0; }
@@ -124,7 +125,7 @@ namespace EnigMouseSendClient
             List<ResultStruct> result;
             result = await Task.Run(() => ImageRecognition(TempImageFilePath));
 
-            var masterPCResult =new MasterPCResultStruct(ClientIPAddress, result);
+            var masterPCResult = new MasterPCResultStruct(ClientIPAddress, result);
             byte[] resultBytes = MessagePackSerializer.Serialize(masterPCResult);
 
             ResultUDPSender.Send(resultBytes);

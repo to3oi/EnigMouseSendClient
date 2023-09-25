@@ -31,6 +31,9 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            groupBox11 = new GroupBox();
+            isConnected = new Label();
+            MasterPC_Connection = new Button();
             groupBox7 = new GroupBox();
             groupBox8 = new GroupBox();
             Line_Accuracy = new Label();
@@ -58,7 +61,6 @@
             groupBox3 = new GroupBox();
             PCIPAddress = new Label();
             label3 = new Label();
-            MasterPC_Connection = new Button();
             groupBox2 = new GroupBox();
             groupBox4 = new GroupBox();
             Cross_Accuracy = new Label();
@@ -67,11 +69,10 @@
             label6 = new Label();
             Cross_X = new Label();
             label1 = new Label();
-            groupBox11 = new GroupBox();
-            isConnected = new Label();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            groupBox11.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox8.SuspendLayout();
             groupBox9.SuspendLayout();
@@ -81,7 +82,6 @@
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
-            groupBox11.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -132,6 +132,35 @@
             tableLayoutPanel2.Size = new Size(788, 422);
             tableLayoutPanel2.TabIndex = 1;
             // 
+            // groupBox11
+            // 
+            groupBox11.Controls.Add(isConnected);
+            groupBox11.Controls.Add(MasterPC_Connection);
+            groupBox11.Dock = DockStyle.Fill;
+            groupBox11.Location = new Point(3, 3);
+            groupBox11.Name = "groupBox11";
+            groupBox11.Size = new Size(388, 49);
+            groupBox11.TabIndex = 2;
+            groupBox11.TabStop = false;
+            // 
+            // isConnected
+            // 
+            isConnected.AutoSize = true;
+            isConnected.Location = new Point(165, 21);
+            isConnected.Name = "isConnected";
+            isConnected.Size = new Size(0, 15);
+            isConnected.TabIndex = 1;
+            // 
+            // MasterPC_Connection
+            // 
+            MasterPC_Connection.Location = new Point(0, 1);
+            MasterPC_Connection.Name = "MasterPC_Connection";
+            MasterPC_Connection.Size = new Size(136, 48);
+            MasterPC_Connection.TabIndex = 0;
+            MasterPC_Connection.Text = "受信開始";
+            MasterPC_Connection.UseVisualStyleBackColor = true;
+            MasterPC_Connection.Click += MasterPC_Connection_Click;
+            // 
             // groupBox7
             // 
             groupBox7.Controls.Add(groupBox8);
@@ -163,9 +192,8 @@
             Line_Accuracy.AutoSize = true;
             Line_Accuracy.Location = new Point(55, 60);
             Line_Accuracy.Name = "Line_Accuracy";
-            Line_Accuracy.Size = new Size(14, 15);
+            Line_Accuracy.Size = new Size(0, 15);
             Line_Accuracy.TabIndex = 5;
-            Line_Accuracy.Text = "X";
             // 
             // label12
             // 
@@ -181,9 +209,8 @@
             Line_Y.AutoSize = true;
             Line_Y.Location = new Point(26, 39);
             Line_Y.Name = "Line_Y";
-            Line_Y.Size = new Size(14, 15);
+            Line_Y.Size = new Size(0, 15);
             Line_Y.TabIndex = 3;
-            Line_Y.Text = "Y";
             // 
             // label14
             // 
@@ -199,9 +226,8 @@
             Line_X.AutoSize = true;
             Line_X.Location = new Point(26, 19);
             Line_X.Name = "Line_X";
-            Line_X.Size = new Size(14, 15);
+            Line_X.Size = new Size(0, 15);
             Line_X.TabIndex = 1;
-            Line_X.Text = "X";
             // 
             // label16
             // 
@@ -243,9 +269,8 @@
             Dot_Accuracy.AutoSize = true;
             Dot_Accuracy.Location = new Point(55, 60);
             Dot_Accuracy.Name = "Dot_Accuracy";
-            Dot_Accuracy.Size = new Size(14, 15);
+            Dot_Accuracy.Size = new Size(0, 15);
             Dot_Accuracy.TabIndex = 5;
-            Dot_Accuracy.Text = "X";
             // 
             // label18
             // 
@@ -261,9 +286,8 @@
             Dot_Y.AutoSize = true;
             Dot_Y.Location = new Point(26, 39);
             Dot_Y.Name = "Dot_Y";
-            Dot_Y.Size = new Size(14, 15);
+            Dot_Y.Size = new Size(0, 15);
             Dot_Y.TabIndex = 3;
-            Dot_Y.Text = "Y";
             // 
             // label20
             // 
@@ -279,9 +303,8 @@
             Dot_X.AutoSize = true;
             Dot_X.Location = new Point(26, 19);
             Dot_X.Name = "Dot_X";
-            Dot_X.Size = new Size(14, 15);
+            Dot_X.Size = new Size(0, 15);
             Dot_X.TabIndex = 1;
-            Dot_X.Text = "X";
             // 
             // label22
             // 
@@ -323,9 +346,8 @@
             Round_Accuracy.AutoSize = true;
             Round_Accuracy.Location = new Point(55, 60);
             Round_Accuracy.Name = "Round_Accuracy";
-            Round_Accuracy.Size = new Size(14, 15);
+            Round_Accuracy.Size = new Size(0, 15);
             Round_Accuracy.TabIndex = 5;
-            Round_Accuracy.Text = "X";
             // 
             // label4
             // 
@@ -341,9 +363,8 @@
             Round_Y.AutoSize = true;
             Round_Y.Location = new Point(26, 39);
             Round_Y.Name = "Round_Y";
-            Round_Y.Size = new Size(14, 15);
+            Round_Y.Size = new Size(0, 15);
             Round_Y.TabIndex = 3;
-            Round_Y.Text = "Y";
             // 
             // label8
             // 
@@ -359,9 +380,8 @@
             Round_X.AutoSize = true;
             Round_X.Location = new Point(26, 19);
             Round_X.Name = "Round_X";
-            Round_X.Size = new Size(14, 15);
+            Round_X.Size = new Size(0, 15);
             Round_X.TabIndex = 1;
-            Round_X.Text = "X";
             // 
             // label10
             // 
@@ -401,16 +421,6 @@
             label3.TabIndex = 0;
             label3.Text = "PCIP";
             // 
-            // MasterPC_Connection
-            // 
-            MasterPC_Connection.Location = new Point(0, 1);
-            MasterPC_Connection.Name = "MasterPC_Connection";
-            MasterPC_Connection.Size = new Size(136, 48);
-            MasterPC_Connection.TabIndex = 0;
-            MasterPC_Connection.Text = "受信開始";
-            MasterPC_Connection.UseVisualStyleBackColor = true;
-            MasterPC_Connection.Click += MasterPC_Connection_Click;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(groupBox4);
@@ -442,9 +452,8 @@
             Cross_Accuracy.AutoSize = true;
             Cross_Accuracy.Location = new Point(55, 60);
             Cross_Accuracy.Name = "Cross_Accuracy";
-            Cross_Accuracy.Size = new Size(14, 15);
+            Cross_Accuracy.Size = new Size(0, 15);
             Cross_Accuracy.TabIndex = 5;
-            Cross_Accuracy.Text = "X";
             // 
             // label7
             // 
@@ -460,9 +469,8 @@
             Cross_Y.AutoSize = true;
             Cross_Y.Location = new Point(26, 39);
             Cross_Y.Name = "Cross_Y";
-            Cross_Y.Size = new Size(14, 15);
+            Cross_Y.Size = new Size(0, 15);
             Cross_Y.TabIndex = 3;
-            Cross_Y.Text = "Y";
             // 
             // label6
             // 
@@ -478,9 +486,8 @@
             Cross_X.AutoSize = true;
             Cross_X.Location = new Point(26, 19);
             Cross_X.Name = "Cross_X";
-            Cross_X.Size = new Size(14, 15);
+            Cross_X.Size = new Size(0, 15);
             Cross_X.TabIndex = 1;
-            Cross_X.Text = "X";
             // 
             // label1
             // 
@@ -490,25 +497,6 @@
             label1.Size = new Size(14, 15);
             label1.TabIndex = 0;
             label1.Text = "X";
-            // 
-            // groupBox11
-            // 
-            groupBox11.Controls.Add(isConnected);
-            groupBox11.Controls.Add(MasterPC_Connection);
-            groupBox11.Dock = DockStyle.Fill;
-            groupBox11.Location = new Point(3, 3);
-            groupBox11.Name = "groupBox11";
-            groupBox11.Size = new Size(388, 49);
-            groupBox11.TabIndex = 2;
-            groupBox11.TabStop = false;
-            // 
-            // isConnected
-            // 
-            isConnected.AutoSize = true;
-            isConnected.Location = new Point(165, 21);
-            isConnected.Name = "isConnected";
-            isConnected.Size = new Size(0, 15);
-            isConnected.TabIndex = 1;
             // 
             // Form1
             // 
@@ -523,6 +511,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
+            groupBox11.ResumeLayout(false);
+            groupBox11.PerformLayout();
             groupBox7.ResumeLayout(false);
             groupBox8.ResumeLayout(false);
             groupBox8.PerformLayout();
@@ -537,8 +527,6 @@
             groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            groupBox11.ResumeLayout(false);
-            groupBox11.PerformLayout();
             ResumeLayout(false);
         }
 

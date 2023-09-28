@@ -69,6 +69,7 @@
             label6 = new Label();
             Cross_X = new Label();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -82,6 +83,7 @@
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -112,15 +114,17 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.46154F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.46154F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.0769234F));
             tableLayoutPanel2.Controls.Add(groupBox11, 0, 0);
             tableLayoutPanel2.Controls.Add(groupBox7, 0, 2);
             tableLayoutPanel2.Controls.Add(groupBox9, 1, 1);
             tableLayoutPanel2.Controls.Add(groupBox5, 0, 2);
             tableLayoutPanel2.Controls.Add(groupBox3, 1, 0);
             tableLayoutPanel2.Controls.Add(groupBox2, 0, 1);
+            tableLayoutPanel2.Controls.Add(pictureBox1, 2, 2);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 19);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -128,7 +132,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 13.1034451F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 43.4482765F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 43.4482765F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(788, 422);
             tableLayoutPanel2.TabIndex = 1;
             // 
@@ -139,7 +142,7 @@
             groupBox11.Dock = DockStyle.Fill;
             groupBox11.Location = new Point(3, 3);
             groupBox11.Name = "groupBox11";
-            groupBox11.Size = new Size(388, 49);
+            groupBox11.Size = new Size(297, 49);
             groupBox11.TabIndex = 2;
             groupBox11.TabStop = false;
             // 
@@ -165,9 +168,9 @@
             // 
             groupBox7.Controls.Add(groupBox8);
             groupBox7.Dock = DockStyle.Fill;
-            groupBox7.Location = new Point(397, 241);
+            groupBox7.Location = new Point(3, 241);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(388, 178);
+            groupBox7.Size = new Size(297, 178);
             groupBox7.TabIndex = 9;
             groupBox7.TabStop = false;
             groupBox7.Text = "Line";
@@ -183,7 +186,7 @@
             groupBox8.Dock = DockStyle.Fill;
             groupBox8.Location = new Point(3, 19);
             groupBox8.Name = "groupBox8";
-            groupBox8.Size = new Size(382, 156);
+            groupBox8.Size = new Size(291, 156);
             groupBox8.TabIndex = 2;
             groupBox8.TabStop = false;
             // 
@@ -242,9 +245,9 @@
             // 
             groupBox9.Controls.Add(groupBox10);
             groupBox9.Dock = DockStyle.Fill;
-            groupBox9.Location = new Point(397, 58);
+            groupBox9.Location = new Point(306, 58);
             groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(388, 177);
+            groupBox9.Size = new Size(297, 177);
             groupBox9.TabIndex = 8;
             groupBox9.TabStop = false;
             groupBox9.Text = "Dot";
@@ -260,7 +263,7 @@
             groupBox10.Dock = DockStyle.Fill;
             groupBox10.Location = new Point(3, 19);
             groupBox10.Name = "groupBox10";
-            groupBox10.Size = new Size(382, 155);
+            groupBox10.Size = new Size(291, 155);
             groupBox10.TabIndex = 2;
             groupBox10.TabStop = false;
             // 
@@ -319,9 +322,9 @@
             // 
             groupBox5.Controls.Add(groupBox6);
             groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(3, 241);
+            groupBox5.Location = new Point(306, 241);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(388, 178);
+            groupBox5.Size = new Size(297, 178);
             groupBox5.TabIndex = 8;
             groupBox5.TabStop = false;
             groupBox5.Text = "Round";
@@ -337,7 +340,7 @@
             groupBox6.Dock = DockStyle.Fill;
             groupBox6.Location = new Point(3, 19);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(382, 156);
+            groupBox6.Size = new Size(291, 156);
             groupBox6.TabIndex = 2;
             groupBox6.TabStop = false;
             // 
@@ -397,9 +400,9 @@
             groupBox3.Controls.Add(PCIPAddress);
             groupBox3.Controls.Add(label3);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(397, 3);
+            groupBox3.Location = new Point(306, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(388, 49);
+            groupBox3.Size = new Size(297, 49);
             groupBox3.TabIndex = 6;
             groupBox3.TabStop = false;
             groupBox3.Text = "PC Info";
@@ -427,7 +430,7 @@
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(3, 58);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(388, 177);
+            groupBox2.Size = new Size(297, 177);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Cross";
@@ -443,7 +446,7 @@
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(3, 19);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(382, 155);
+            groupBox4.Size = new Size(291, 155);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
             // 
@@ -498,6 +501,20 @@
             label1.TabIndex = 0;
             label1.Text = "X";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.EnigMouse_Mouse;
+            pictureBox1.InitialImage = Properties.Resources.EnigMouse_Mouse;
+            pictureBox1.Location = new Point(609, 241);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 178);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -527,6 +544,7 @@
             groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -574,5 +592,6 @@
         private Label label1;
         private GroupBox groupBox11;
         private Label isConnected;
+        private PictureBox pictureBox1;
     }
 }

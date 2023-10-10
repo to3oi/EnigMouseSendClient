@@ -7,6 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Platforms>x64</Platforms>
+    <PackageProjectUrl>https://github.com/to3oi/EnigMouseSendClient</PackageProjectUrl>
+    <PackageIcon>EnigMouse_Mouse_Icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +40,14 @@
     </None>
     <None Update="assets\tempimage\.gitkeep">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\EnigMouse_Mouse.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Resources\EnigMouse_Mouse_Icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

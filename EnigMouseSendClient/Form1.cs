@@ -188,16 +188,16 @@ namespace EnigMouseSendClient
                         break;
                     case "Line":
                         {
-                            Round_X.Text = resultStruct.PosX.ToString();
-                            Round_Y.Text = resultStruct.PosY.ToString();
-                            Round_Accuracy.Text = resultStruct.Confidence.ToString();
+                            Line_X.Text = resultStruct.PosX.ToString();
+                            Line_Y.Text = resultStruct.PosY.ToString();
+                            Line_Accuracy.Text = resultStruct.Confidence.ToString();
                         }
                         break;
                     case "Round":
                         {
-                            Line_X.Text = resultStruct.PosX.ToString();
-                            Line_Y.Text = resultStruct.PosY.ToString();
-                            Line_Accuracy.Text = resultStruct.Confidence.ToString();
+                            Round_X.Text = resultStruct.PosX.ToString();
+                            Round_Y.Text = resultStruct.PosY.ToString();
+                            Round_Accuracy.Text = resultStruct.Confidence.ToString();
                         }
                         break;
                 }

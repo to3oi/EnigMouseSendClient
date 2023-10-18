@@ -117,8 +117,8 @@ namespace EnigMouseSendClient
             var TempImageFilePath = Path.Combine(assetsPath, "TempImage", $"{saveFileIndex}.jpeg");
             image.Save(TempImageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveFileIndex++;
-            //最大枚数を1000枚に制限
-            if (1000 <= saveFileIndex) { saveFileIndex = 0; }
+            //最大枚数を100枚に制限
+            if (100 <= saveFileIndex) { saveFileIndex = 0; }
 
             //TODO:物体検出の処理に置き換え
 

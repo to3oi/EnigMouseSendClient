@@ -37,8 +37,8 @@ namespace EnigMouseSendClient
                 var boundingBoxes =
                     probabilities
                     .Select(probability => parser.ParseOutputs(probability))
-                    //.5Fが表示するスコアの値
-                    .Select(boxes => parser.FilterBoundingBoxes(boxes, 5, .5F));
+                    //0.1Fが表示するスコアの値
+                    .Select(boxes => parser.FilterBoundingBoxes(boxes, 5, 0.1f));
 
                 //基本的にimages.Countは1のはずなので複数回回す意味はないが2以上になったときに最後に処理した(indexが大きい最新のもの)の値を返すのに使用
                 for (var i = 0; i < images.Count(); i++)

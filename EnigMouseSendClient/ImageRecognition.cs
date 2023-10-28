@@ -94,42 +94,6 @@ namespace EnigMouseSendClient
                 uint posX = x + width / 2;
                 uint posY = y + height / 2;
 
-                /*double resPosX = posX;
-                double resPosY = posY;
-
-                //Maskで調整した値を反映
-                // X
-                int rightMask = form1.GetRightMask;
-                int leftMask = form1.GetLeftMask;
-
-                if (posX <= leftMask ||
-                 originalImageWidth - rightMask <= posX)
-                {
-                    //右のMaskの範囲を越していたらresultsに追加しないで終了
-                    continue;
-                }
-                resPosX = (double)(posX - leftMask) * (double)(originalImageWidth / (double)(originalImageWidth - (double)(rightMask + leftMask)));
-
-
-
-                // Y
-                int topMask = form1.GetTopMask;
-                int bottomMask = form1.GetBottomMask;
-                if (posY <= topMask ||
-                 originalImageHeight - bottomMask <= posY)
-                {
-                    //下のMaskの範囲を越していたらresultsに追加しないで終了
-                    continue;
-                }
-                resPosY = (double)(posY - topMask) * (double)(originalImageHeight / (double)(originalImageHeight - (double)(topMask + bottomMask)));
-
-                resPosX = resPosX + form1.GetPositionOffsetX;
-                resPosY = resPosY + form1.GetPositionOffsetY;
-
-                //UnityのXY軸に補正する
-
-                resPosY = Math.Abs(resPosY - originalImageHeight);*/
-
                 results.Add(new ResultStruct(box.Label, (float)posX, (float)posY, box.Confidence));
             }
 
